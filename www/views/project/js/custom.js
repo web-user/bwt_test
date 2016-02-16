@@ -3,12 +3,12 @@ jQuery(document).ready(function($) {
 
 		//add some elements with animate effect
 
-$(function () {                                      // Когда страница загрузится
-    $('.nav li a').each(function () {             // получаем все нужные нам ссылки
-        var location = window.location.href; // получаем адрес страницы
-        var link = this.href;                // получаем адрес ссылки
-        if(location == link) {               // при совпадении адреса ссылки и адреса окна
-            $(this).addClass('active');  //добавляем класс
+$(function () {                                      
+    $('.nav li a').each(function () {            
+        var location = window.location.href; 
+        var link = this.href;                
+        if(location == link) {            
+            $(this).addClass('active');
         }
     });
 });
@@ -26,10 +26,10 @@ $(function () {                                      // Когда страни�
            data: {auth: auth, loginauth: loginauth, passauth: passauth},
            success: function(res){
                 if(res != 'Поля логин/пароль должны быть заполнены!' && res != 'Логин/пароль введены неверно!'){
-                    // если пользователь успешно авторизован
+                    // IF success
                     window.location = "/";
                 }else{
-                    // если авторизация неудачна
+                    // if error
                     $(".error").remove();
                     $(".authform").append('<div class="error"></div>');
                     $(".error").hide().fadeIn(500).html(res);
@@ -54,7 +54,7 @@ $(function () {                                      // Когда страни�
 			var name = $("#name").val();
 			var email = $("#email").val();
     	 if(login.length == 0 ){
-        		$(".reg-sss").html('<font size="3" color="red">Не все поля заполнены. Попробуйте еще раз</font>');
+        		$(".reg-sss").html('<font size="3" color="red">Not all fields are filled. try again</font>');
         	}else{
         		$.ajax({
         		   url: './',
@@ -64,12 +64,11 @@ $(function () {                                      // Когда страни�
         		        if(res){
         		           $(".reg-sss").html(res);
         		           console.log(res)
-        		           if(res == "<div class='success'>Регистрация прошла успешно.</div>" ){
+        		           if(res == "<div class='success'>Registration completed successfully.</div>" ){
         		           		window.location = "/";
         		           		$("#login").val('');
         		           }
         		        }else{
-        		            // если авторизация неудачна
         		            $(".error").remove();
         		            $(".authform").append('<div class="error"></div>');
         		            $(".error").hide().fadeIn(500).html(res);
@@ -84,7 +83,7 @@ $(function () {                                      // Когда страни�
     });
 
 
-  		// registration
+  		// feedback
       $("#feedback").click(function(e){
       	e.preventDefault();
       	var feedback = $("#feedback").val();
@@ -92,7 +91,6 @@ $(function () {                                      // Когда страни�
       	var namefeedback = $("#namefeedback").val();
       	var emailfeedback = $("#emailfeedback").val();
       	var text = $("#text").val();
-      	var pattern = /^[a-z0-9_-]+@[a-z0-9-]+\.[a-z]{2,6}$/i;
       	     if(namefeedback.length == 0){
             		$(".reg-sss").html('<font size="3" color="red">Not all fields are filled. try again</font>');
             	}else{
@@ -106,7 +104,6 @@ $(function () {                                      // Когда страни�
           		           $(".reg-sss").html(res);
           		           console.log(res)
           		        }else{
-          		            // если авторизация неудачна
           		            $(".error").remove();
           		            $(".authform").append('<div class="error"></div>');
           		            $(".error").hide().fadeIn(500).html(res);
