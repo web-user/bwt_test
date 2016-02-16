@@ -101,3 +101,44 @@ function authorization(){
         }
     }
 }
+
+// fuction feedback
+function feedback(){
+		$kapcha = $_POST['kapcha'];
+		$namefeedback = clear($_POST['namefeedback']);
+		$emailfeedback = clear($_POST['emailfeedback']);
+		$text = clear($_POST['text']);
+		$date = date("Y-m-d");
+
+		if( empty($namefeedback) ) {
+			$error .="<li>Enter Name</li>";
+		}
+		if( empty($emailfeedback) ) {
+			$error .="<li>Enter Email</li>";
+		}
+		if( empty($text) ) {
+			$error .="<li>Enter Text</li>";
+		}
+
+		if($_POST['kapcha'] != $_SESSION['rand_code']) {
+			$error .="<li>Invalid verification code !</li>";
+		}
+
+
+	if( empty($error) ){
+
+		$query = "INSERT INTO feedback (email, name, anons, date)
+			VALUES ('$emailfeedback', '$namefeedback', '$text', '$date')";
+		$res = mysql_query($query) or die(mysql_error());
+
+		if( mysql_affected_rows() > 0 ){
+			//if the entry is added
+			echo "<div class='success'>Registration completed successfully.</div>";
+		}else{
+			//if the field is not filled
+			echo "<div class='error'>Error!</div> ";
+		}
+	} else {
+		echo "<div class='error'>Required fields are not filled:<br> <ul>$error</ul></div> ";
+	}
+}

@@ -14,6 +14,13 @@ if( $_POST['reg'] ){
 	exit;
 }
 
+// feedback
+if( $_POST['feedback'] ){
+	feedback();
+	exit;
+}
+
+
 // authorization
 if($_POST['auth']){
     authorization();
