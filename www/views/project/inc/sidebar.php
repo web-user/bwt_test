@@ -21,7 +21,7 @@
 					</div>
 					<div class="modal-footer">
 					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					  <input type="submit" name="auth" id="auth" value="Войти" class="btn btn-primary">
+					  <input type="submit" name="auth" id="auth" value="Log in" class="btn btn-primary">
 					</div>
 				</form>
 
