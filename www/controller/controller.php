@@ -8,6 +8,12 @@ require_once MODEL;
 // connection library functions
 require_once 'functions/functions.php';
 
+// registration
+if( $_POST['reg'] ){
+	registration();
+	exit;
+}
+
 // obtain a dynamic part of the pattern
 $view = empty($_GET['view']) ? 'reg' : $_GET['view'];
 
