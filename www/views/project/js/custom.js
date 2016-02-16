@@ -25,7 +25,7 @@ $(function () {
            type: 'POST',
            data: {auth: auth, loginauth: loginauth, passauth: passauth},
            success: function(res){
-                if(res != 'Поля логин/пароль должны быть заполнены!' && res != 'Логин/пароль введены неверно!'){
+                if(res != 'Fields username / password to be filled!' && res != 'Username / password is incorrect!'){
                     // IF success
                     window.location = "/";
                 }else{

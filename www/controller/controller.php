@@ -14,6 +14,27 @@ if( $_POST['reg'] ){
 	exit;
 }
 
+// authorization
+if($_POST['auth']){
+    authorization();
+    if($_SESSION['auth']['user']){
+        // If a user is logged
+        echo "<p>Welcome, {$_SESSION['auth']['user']}</p>";
+        exit;
+    }else{
+        // if authorization fails
+        echo $_SESSION['auth']['error'];
+        unset($_SESSION['auth']);
+        exit;
+    }
+}
+
+// exit user
+if( $_GET['do'] == 'logout' ){
+	logout();
+	redirect();
+}
+
 // obtain a dynamic part of the pattern
 $view = empty($_GET['view']) ? 'reg' : $_GET['view'];
 

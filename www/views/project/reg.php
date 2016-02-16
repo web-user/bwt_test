@@ -75,7 +75,7 @@
 							</div>
 							<div class="col-md-12 dost-site">
 								<div class="col-md-6">
-									<input type="submit" name="reg" id="reg" value="Отправить" class="serch-btn btn-primary">
+									<input type="submit" name="reg" id="reg" value="Submit" class="serch-btn btn-primary">
 								</div>
 								<div class="col-md-6">
 									

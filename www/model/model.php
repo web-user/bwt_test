@@ -71,5 +71,33 @@ function registration(){
 	}else{
 		//if the field is not filled
 		echo "<div class='error'>Required fields are not filled:<br> <ul>$error</ul></div> ";
+	}
 
+}
+
+//authorization
+function authorization(){
+    $login = mysql_real_escape_string(trim($_POST['loginauth']));
+    $pass = trim($_POST['passauth']);
+    
+    if(empty($login) OR empty($pass)){
+        // if the empty field a login / password
+        $_SESSION['auth']['error'] = "Fields username / password to be filled!";
+    }else{
+        // if the received data from the fields of the login / password
+        $pass = md5($pass);
+        
+        $query = "SELECT customer_id, name, email FROM customers WHERE login = '$login' AND password = '$pass' LIMIT 1";
+        $res = mysql_query($query) or die(mysql_error());
+        if(mysql_num_rows($res) == 1){
+            // If authorization is successful
+            $row = mysql_fetch_row($res);
+            $_SESSION['auth']['customer_id'] = $row[0];
+            $_SESSION['auth']['user'] = $row[1];
+            $_SESSION['auth']['email'] = $row[2];
+        }else{
+            // if the wrong login / password
+            $_SESSION['auth']['error'] = "Username / password is incorrect!";
+        }
+    }
 }
