@@ -56,6 +56,11 @@ switch ($view) {
 	case('feedback'):
 		// feedback
 	break;
+	case ('archive'):
+		// Archive Feedback
+		$all_feedback = get_all_feedback();
+
+	break;
 
 }
 

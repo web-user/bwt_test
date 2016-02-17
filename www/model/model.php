@@ -133,7 +133,7 @@ function feedback(){
 
 		if( mysql_affected_rows() > 0 ){
 			//if the entry is added
-			echo "<div class='success'>Registration completed successfully.</div>";
+			echo "<div class='success'>feedback successfully.</div>";
 		}else{
 			//if the field is not filled
 			echo "<div class='error'>Error!</div> ";
@@ -141,4 +141,17 @@ function feedback(){
 	} else {
 		echo "<div class='error'>Required fields are not filled:<br> <ul>$error</ul></div> ";
 	}
+}
+
+/*Archive feedback*/
+function get_all_feedback(){
+	$query = "SELECT `id`, `name`, `anons`, `date` FROM feedback ORDER BY id";
+	$res = mysql_query($query);
+
+	$all_feedback = array();
+
+	while($row = mysql_fetch_assoc($res)){
+		$all_feedback[] = $row;
+	}
+	return $all_feedback;
 }
